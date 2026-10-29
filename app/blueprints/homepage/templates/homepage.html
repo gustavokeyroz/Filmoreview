@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmoreview</title>
-    <link rel="stylesheet" href="../static/homepage.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Logo</div>
-            <div class="links">
-                <a href="#">Home</a>
-                <a href="#">Filmes</a>
-                <a href="#">Cátalogos</a>
-            </div>
-        </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../../static/style.css">
+        <title>Filmoreview</title>
+    </head>
 
-    <main>
+    <body>
 
-    </main>
+        <header>
+            <nav>
+                <div class="logo">
+                    <h2><a>Filmoreview</a></h2>
+                </div>
 
-    <footer>
+                <div class="links">
+                    <a href="">Entrar</a>
+                    <a href="">Criar Conta</a>
+                    <a href="../../filmes/templates/filmes.html">Filmes</a>
+                    <a href="">Catálogos</a>
+                    <a href="">Postagens</a>
+                </div>
+            </nav>
+        </header>
 
-    </footer>
-</body>
+        <!--Conteúdo Principal-->
+        <main id="main">
+            <img src="" alt="" id="bannerHomePage">
+            <p>Wildwood 2026</p>
+            <br> <br>
+
+            <h2>Filmes mais bem avaliados: </h2>
+            <div id="filmesBemAvaliados"></div>
+            <br> <br>
+
+            <h2>Postagens recentes: </h2>
+            <div id="postsRecentes"></div>
+        </main>
+
+        <!--Rodapé-->
+        <footer>
+            <p>Footer</p>
+        </footer>
+        <script src="../static/script.js"></script>
+    </body>
 </html>

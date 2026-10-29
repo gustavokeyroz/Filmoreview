@@ -1,0 +1,92 @@
+/* Set Padrão das Páginas */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #c9e0eb;
+    font-family: lora;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d0e20;
+}
+
+header {
+    height: auto;
+    width: auto;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+nav {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    border-radius: 10px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Página Inicial */
+
+#bannerHomePage {
+    width: 80%;
+    height: auto;
+}
+
+#filmesBemAvaliados {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#postsRecentes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Página de Filmes */
+
+#opcoesPesquisa {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#filtroBotao {
+    padding: 0 5px;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    font-size: 3vh;
+}
