@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('img/fundo-cinema(1).png');
+}
+.content{
+    height: auto;
+    margin: 40px;
+    width: 25dvw;
+    h1{
+        color: #C8B3F6;
+        font-family: georgia;
+        font-size: 40px;
+        padding-bottom: 20px;
+    }
+    h2{
+        color: #B0A9E5;
+        font-family: georgia;
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+}
+.formulario{
+    margin: 50px;
+    width: 30dvw;
+    padding: 20px;
+    height: auto;
+    display: flex;
+    font-family: georgia;
+    flex-direction: column;
+    align-items: left;
+    background-color: #2D1C7F;
+    border-radius: 15px;
+    label{
+        padding: 5px;
+        font-size: 16px;
+        color: #C8B3F6;
+    }
+    input{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid #7546E8;
+        background-color: #0D0E20;
+        color: #B0A9E5;
+    }
+    placeholder{
+        color: #B0A9E5;
+    }
+    p{
+        color: #C8B3F6;
+        font-size: 12px;
+        font-family: arial;
+        align-self: center;
+    }
+    button{
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #C8B3F6;
+        font-size: 14px;
+    }
+    button:hover{
+        background-color: #B0A9E5;
+        transition: 0.3s;
+    }
+    h1,h5{
+        padding-bottom: 10px;
+        color: #C8B3F6;
+    }
+}
