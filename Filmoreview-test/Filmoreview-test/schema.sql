@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS filmoreview;
+USE filmoreview;
+
+
+CREATE TABLE IF NOT EXISTS usuario(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nomeCompleto VARCHAR(100) NOT NULL,
+    nomeUsuario VARCHAR(20) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    dataNascimento DATE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
