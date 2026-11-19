@@ -1,0 +1,5 @@
+ferramentas e bibliotecas para instalar:
+
+1. venv
+2. pymysql
+3. python-dotenv
