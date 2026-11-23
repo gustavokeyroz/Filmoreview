@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/form.css">
+    <link rel="stylesheet" href="../static/perfil.css">
+    <title>Perfil</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h2><a href="../../homepage/templates/homepage.html">Filmoreview</a></h2>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="content">
+            <!-- troque a letra por <img> com a foto do usuário -->
+            <div class="avatar">U</div>
+            <h1>Nome do usuário</h1>
+            <h2>@usuario</h2>
+        </div>
+
+        <div class="formulario">
+            <h1>Meu perfil</h1>
+            <h5>Dados da sua conta.</h5>
+
+            <label for="perfil-nome">Nome completo:</label>
+            <input type="text" id="perfil-nome" value="Nome do usuário" readonly>
+
+            <label for="perfil-usuario">Nome de usuário:</label>
+            <input type="text" id="perfil-usuario" value="usuario" readonly>
+
+            <label for="perfil-email">E-mail:</label>
+            <input type="email" id="perfil-email" value="voce@email.com" readonly>
+
+            <label for="perfil-senha">Senha:</label>
+            <input type="password" id="perfil-senha" value="12345678" readonly>
+
+            <!-- sem função por enquanto -->
+            <button type="button" id="btn-alterar-conta">Alterar conta</button>
+            <button type="button" id="btn-alterar-senha">Alterar senha</button>
+            <button type="button" id="btn-alterar-email">Alterar e-mail</button>
+            <button type="button" id="btn-excluir-conta" class="excluir">Excluir conta</button>
+        </div>
+    </main>
+
+    <!-- Formulários: ficam escondidos (hidden). O JS só precisa tirar/colocar o atributo hidden do .modal -->
+    <div class="modal" id="modal-senha" hidden>
+        <form class="formulario">
+            <h1>Alterar senha</h1>
+            <h5>Informe sua senha atual e escolha uma nova.</h5>
+
+            <label for="senha-atual">Senha atual:</label>
+            <input type="password" id="senha-atual" required>
+
+            <label for="nova-senha">Nova senha:</label>
+            <input type="password" id="nova-senha" required>
+            <p>Senha deve conter pelo menos 8 caracteres.</p>
+
+            <label for="confirmar-nova-senha">Confirmar nova senha:</label>
+            <input type="password" id="confirmar-nova-senha" required>
+
+            <button type="submit">Salvar</button>
+            <button type="button" class="cancelar">Cancelar</button>
+        </form>
+    </div>
+
+    <div class="modal" id="modal-email" hidden>
+        <form class="formulario">
+            <h1>Alterar e-mail</h1>
+            <h5>Informe o novo e-mail e confirme com sua senha.</h5>
+
+            <label for="novo-email">Novo e-mail:</label>
+            <input type="email" id="novo-email" required>
+
+            <label for="confirmar-novo-email">Confirmar novo e-mail:</label>
+            <input type="email" id="confirmar-novo-email" required>
+
+            <label for="senha-email">Senha atual:</label>
+            <input type="password" id="senha-email" required>
+
+            <button type="submit">Salvar</button>
+            <button type="button" class="cancelar">Cancelar</button>
+        </form>
+    </div>
+
+    <div class="modal" id="modal-excluir" hidden>
+        <form class="formulario">
+            <h1>Excluir conta</h1>
+            <h5>Esta ação não pode ser desfeita.</h5>
+
+            <label for="senha-exclusao">Digite sua senha para confirmar:</label>
+            <input type="password" id="senha-exclusao" required>
+
+            <label><input type="checkbox" required> Entendo que minha conta será excluída.</label>
+
+            <button type="submit" class="excluir">Excluir conta</button>
+            <button type="button" class="cancelar">Cancelar</button>
+        </form>
+    </div>
+</body>
+</html>
