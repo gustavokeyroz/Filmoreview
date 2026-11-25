@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('auth.static', filename='form.css') }}">
+    <title>Perfil</title>
+    <style>
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 2000;
+        }
+
+        .modal[hidden] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+            {% with mensagens = get_flashed_messages() %}
+                {% for mensagem in mensagens %}
+                    <p class="mensagem">{{ mensagem }}</p>
+                {% endfor %}
+            {% endwith %}
+
+        <div class="content">
+            <h1>{{ usuario.nomeCompleto }}</h1>
+            <h2>@ {{ usuario.nomeUsuario }}</h2>
+        </div>
+
+        <form class="formulario">
+            <h1>Meu perfil</h1>
+            <h5>Dados da sua conta.</h5>
+
+            <label for="perfil-nome">Nome completo:</label>
+            <h2>{{ usuario.nomeCompleto }}</h2>
+
+            <label for="perfil-usuario">Nome de usuário:</label>
+            <h2>@ {{ usuario.nomeUsuario }}</h2>
+
+            <label for="perfil-email">E-mail:</label>
+            <h2>{{ usuario.email }}</h2>
+
+            <button type="button" id="btn-alterar-senha">Alterar senha</button>
+            <button type="button" id="btn-alterar-email">Alterar e-mail</button>
+            <button type="button" id="btn-excluir-conta" class="excluir">Excluir conta</button>
+
+            <a href="{{ url_for('perfil.logout') }}">
+                <button type="button">Sair da conta</button>
+            </a>
+        </form>
+    </main>
+
+    <!-- Formulários: ficam escondidos (hidden). O JS só precisa tirar/colocar o atributo hidden do .modal -->
+    <div class="modal" id="modal-senha" hidden>
+        <form class="formulario" method="post" action="{{ url_for('perfil.alterarSenha') }}">
+
+            <h1>Alterar senha</h1>
+            <h5>Informe sua senha atual e escolha uma nova.</h5>
+
+            <label for="senha-atual">Senha atual:</label>
+            <input type="password" id="senha-atual" name="senhaAtual" required>
+
+            <label for="nova-senha">Nova senha:</label>
+            <input type="password" id="nova-senha" name="novaSenha" minlength="8" required>
+            <p>Senha deve conter pelo menos 8 caracteres.</p>
+
+            <label for="confirmar-nova-senha">Confirmar nova senha:</label>
+            <input type="password" id="confirmar-nova-senha" name="confirmarNovaSenha" required>
+
+            <button type="submit">Salvar</button>
+            <button type="button" class="cancelar">Cancelar</button>
+        </form>
+    </div>
+
+    <div class="modal" id="modal-email" hidden>
+        <form class="formulario" method="post" action="{{ url_for('perfil.alterarEmail') }}">
+
+            <h1>Alterar e-mail</h1>
+            <h5>Informe o novo e-mail e confirme com sua senha.</h5>
+
+            <label for="novo-email">Novo e-mail:</label>
+            <input type="email" id="novo-email" name="novoEmail" required>
+
+            <label for="confirmar-novo-email">Confirmar novo e-mail:</label>
+            <input type="email" id="confirmar-novo-email" name="confirmarNovoEmail" required>
+
+            <label for="senha-email">Senha atual:</label>
+            <input type="password" id="senha-email" name="senha" required>
+
+            <button type="submit">Salvar</button>
+            <button type="button" class="cancelar">Cancelar</button>
+        </form>
+    </div>
+
+    <div class="modal" id="modal-excluir" hidden>
+        <form class="formulario" method="post" action="{{ url_for('perfil.excluirPerfil') }}">
+
+            <h1>Excluir conta</h1>
+            <h5>Esta ação não pode ser desfeita.</h5>
+
+            <label for="senha-exclusao">Digite sua senha para confirmar:</label>
+            <input type="password" id="senha-exclusao" name="senha" required>
+
+            <label><input type="checkbox" required> Entendo que minha conta será excluída.</label>
+
+            <button type="submit" class="excluir">Excluir conta</button>
+            <button type="button" class="cancelar">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('perfil.static', filename='perfil.js') }}"></script>
+</body>
+</html>

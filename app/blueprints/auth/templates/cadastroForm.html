@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('auth.static', filename='form.css') }}">
+    <title>Cadastro</title>
+</head>
+<body>
+    <header>
+            <nav>
+                <div class="logo">
+                    <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
+                </div>
+            </nav>
+        </header>
+    <main>
+        {% with mensagens = get_flashed_messages() %}
+                {% for mensagem in mensagens %}
+                    <p class="mensagem">{{ mensagem }}</p>
+                {% endfor %}
+            {% endwith %}
+
+        <div class="content">
+            <h1>Crie sua conta e comece a avaliar filmes.</h1>
+            <h2>Dê notas, escreva reviews e descubra o que os outros cinéfilos estão assistindo.</h2>
+        </div>
+        <form class="formulario" action="{{ url_for('auth.cadastro') }}" method="post">
+            <br>
+            <h1>Crie sua conta</h1>
+            <h5>Preencha os campos abaixo para criar sua conta.</h5>
+            <br>
+            
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome" name="nomeCompleto" required>
+
+            <label for="nome-usuario">Nome de usuário:</label>
+            <input type="text" id="nome-usuario" name="nomeUsuario" required>
+
+            <label for="data-nascimento">Data de Nascimento:</label>
+            <input type="date" id="data-nascimento" name="dataNascimento" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <p>Senha deve conter pelo menos 8 caracteres.</p>
+
+            <label for="confirmar-senha">Confirmar Senha:</label>
+            <input type="password" id="confirmar-senha" name="confirmacaoSenha" required>
+
+            <button type="submit">Criar conta</button>
+            <p>Já possui uma conta? <a href="{{ url_for('auth.login') }}">Faça login</a></p>
+        </form>
+    </main>
+
+
+    <script>
+        const hoje = new Date();
+        const hojeFormatado = hoje.getFullYear() + '-' + String(hoje.getMonth() + 1).padStart(2, '0') + '-' + String(hoje.getDate()).padStart(2, '0');
+
+        document.getElementById('data-nascimento').max = hojeFormatado;
+
+        const anoMinimo = hoje.getFullYear() - 120;
+        document.getElementById('data-nascimento').min = `${anoMinimo}-01-01`;
+    </script>
+</body>
+</html>

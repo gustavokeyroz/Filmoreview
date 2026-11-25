@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('filmes.static',filename='detalheFilme.css') }}">
+        <title>Filmes</title>
+    </head>
+
+    <body>
+        <header id="header">
+            <nav>
+                <div class="logo">
+                    <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
+                </div>
+            </nav>
+        </header>
+
+        <!--Conteúdo Principal-->
+        <main id="main">
+
+            {% with mensagens = get_flashed_messages() %}
+                {% for mensagem in mensagens %}
+                    <p>{{ mensagem }}</p>
+                {% endfor %}
+            {% endwith %}
+            
+            <div class="review_filme">
+                <div class="filmeDetalhes">
+                    <h1>{{ filme.nomeFilme }}</h1>
+
+                    <img src="{{ filme.imageUrl }}" alt="{{ filme.nomeFilme }}" class="imgDetalheFilme">
+
+                    <p>{{ filme.descricaoFilme }}</p>
+
+                    <p>{{ filme.anoLancamento }}</p>
+                </div>
+
+
+                <div>
+                    <div class="content">
+                        <h1>Conte o que você achou.</h1>
+                        <h2>Escolha o filme, dê uma nota e escreva a sua review.</h2>
+                    </div>
+
+                    <form class="formulario" method="post" action="{{ url_for('filmes.criarPostagem', id=filme.id) }}">
+                        <br>
+                        <h1>Nova review</h1>
+                        <h5>Preencha os campos abaixo para publicar.</h5>
+
+                        <h2>{{ filme.nomeFilme }}</h2>
+
+                        <label for="nota">Nota:</label>
+                        <select id="nota" name="nota" required>
+                            <option value="">Escolha uma nota</option>
+                            <option value="5">5 - Excelente</option>
+                            <option value="4">4 - Muito bom</option>
+                            <option value="3">3 - Bom</option>
+                            <option value="2">2 - Fraco</option>
+                            <option value="1">1 - Ruim</option>
+                        </select>
+
+                        <label for="review">Sua review:</label>
+                        <textarea id="review" name="comentario" rows="5" maxlength="255" required></textarea>
+
+                        <button type="submit">Publicar review</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="postagens">
+
+                <h1>Reviews dos usuários</h1>
+
+                {% for postagem in postagens %}
+
+                    <div class="postagem">
+
+                        <h2>Usuário: {{ postagem.nomeUsuario }}</h2>
+
+                        <p>Nota: {{ postagem.nota }}/5</p>
+
+                        <p>Comentário: {{ postagem.comentario }}</p>
+
+                        <p>{{ postagem.created_at }}</p>
+
+                    </div>
+
+                {% else %}
+
+                    <p>Este filme ainda não possui reviews.</p>
+
+                {% endfor %}
+
+            </div>
+            
+        </main>
+
+    </body>
+</html>

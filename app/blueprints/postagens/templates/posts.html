@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Postagens</title>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
+            </div>
+
+            <div class="links">
+                    <a href="{{ url_for('auth.login') }}">Entrar</a>
+                    <a href="{{ url_for('auth.cadastro') }}">Criar Conta</a>
+                    <a href="{{ url_for('filmes.filmes') }}">Filmes</a>
+                    <a href="{{ url_for('postagens.postagens') }}">Postagens</a>
+                    <a href="{{ url_for('perfil.perfil') }}">Perfil</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <div class="post" id="post">
+            {% for post in posts %}
+
+                <div class="postagem">
+
+                    <h3>Usuário: {{ post.nomeUsuario }}</h3>
+
+                    <a href="{{ url_for('filmes.detalheFilme', id=post.filmeId) }}">
+                        {{ post.nomeFilme }}
+                    </a>
+
+                    <p>Nota: {{ post.nota }}/5</p>
+
+                    <p>Comentário{{ post.comentario }}</p>
+
+                    <small>{{ post.created_at }}</small>
+
+                </div>
+
+            {% else %}
+
+                <p>Nenhuma postagem encontrada.</p>
+
+            {% endfor %}
+        </div>
+    </main>
+
+    <script src="{{ url_for('postagens.static', filename='script.js') }}"></script>
+</body>
+</html>

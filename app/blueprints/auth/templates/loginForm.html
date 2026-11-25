@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('auth.static', filename='form.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    <header>
+            <nav>
+                <div class="logo">
+                    <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
+                </div>
+            </nav>
+        </header>
+    <main>
+        {% with mensagens = get_flashed_messages() %}
+                {% for mensagem in mensagens %}
+                    <p class="mensagem">{{ mensagem }}</p>
+                {% endfor %}
+            {% endwith %}
+
+
+        <div class="content">
+            <h1>Que bom ter você de volta!</h1>
+            <h2>Dê notas, escreva reviews e descubra o que os outros cinéfilos estão assistindo.</h2>
+        </div>
+        <form class="formulario" action="{{ url_for('auth.login') }}" method="post">
+            <br>
+            <h1>Faça o seu login</h1>
+            <h5>Preencha os campos abaixo efetivar o login.</h5>
+            <br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required name="email">
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required name="senha">
+
+            <button type="submit">Login</button>
+            <p>Não possui uma conta? <a href="{{ url_for('auth.cadastro') }}">Criar conta</a></p>
+        </form>
+    </main>
+</body>
+</html>

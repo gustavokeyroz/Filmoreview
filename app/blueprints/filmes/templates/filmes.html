@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios_new,arrow_forward_ios" />        <title>Filmes</title>
+    </head>
+
+    <body>
+        <header id="header">
+            <nav>
+                <div class="logo">
+                    <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
+                </div>
+
+                <div class="links">
+                    <a href="{{ url_for('auth.login') }}">Entrar</a>
+                    <a href="{{ url_for('auth.cadastro') }}">Criar Conta</a>
+                    <a href="{{ url_for('filmes.filmes') }}">Filmes</a>
+                    <a href="{{ url_for('postagens.postagens') }}">Postagens</a>
+                    <a href="{{ url_for('perfil.perfil') }}">Perfil</a>
+                </div>
+            </nav>
+        </header>
+
+        <!--Conteúdo Principal-->
+        <main id="main">
+                
+    <div id="filmes">
+            <div class="carousel-header">
+                <p>Filmes</p>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev material-symbols-outlined">arrow_back_ios_new</button>
+                    <button class="carousel-btn next material-symbols-outlined">arrow_forward_ios</button>
+                </div>
+            </div>
+        <hr>
+
+        <div class="carousel" id="carousel-filmes">
+            <ul class="card-list">
+
+                {% for filme in filmes %}
+                <li class="card-item">
+                    <a href="{{ url_for('filmes.detalheFilme', id=filme.id) }}"><img src="{{ filme.imageUrl }}" alt="{{ filme.nomeFilme }}" class="card-image"></a>
+
+                    <h3>{{ filme.nomeFilme }}</h3>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="carousel-header">
+                <p>Filmes mais bem avaliados</p>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev material-symbols-outlined">arrow_back_ios_new</button>
+                    <button class="carousel-btn next material-symbols-outlined">arrow_forward_ios</button>
+                </div>
+            </div>
+        <hr>
+
+        <div class="carousel" id="carousel-avaliados">
+            <ul class="card-list">
+
+                {% for filme in filmesMaisBemAvaliados %}
+                <li class="card-item">
+                    <a href="{{ url_for('filmes.detalheFilme', id=filme.id) }}"><img src="{{ filme.imageUrl }}" alt="{{ filme.nomeFilme }}" class="card-image"></a>
+
+                    <h3>{{ filme.nomeFilme }}</h3>
+                    <h3>{{ filme.mediaNota }}</h3>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+            
+        </main>
+
+        <script src="{{ url_for('filmes.static', filename='script.js') }}"></script>
+    </body>
+</html>
