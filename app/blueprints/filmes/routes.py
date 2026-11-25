@@ -78,9 +78,11 @@ def detalheFilme(id):
 
             cursor.execute("""
                 SELECT
+                    reviewFilmes.id,
                     reviewFilmes.nota,
                     reviewFilmes.comentario,
                     reviewFilmes.created_at,
+                    reviewFilmes.fkIdUsuario,
                     usuarios.nomeUsuario
                 FROM reviewFilmes
                 JOIN usuarios
@@ -153,6 +155,51 @@ def criarPostagem(id):
         flash('Avaliação publicada!')
 
         return redirect(url_for('filmes.detalheFilme', id=id))
+
+    finally:
+        connection.close()
+
+
+# Excluir avaliação
+@filmes_bp.route('/review/<int:review_id>/excluir', methods=['POST'])
+def excluirReview(review_id):
+
+    if 'usuarioId' not in session:
+        return redirect(url_for('auth.login'))
+
+    connection = get_db()
+
+    try:
+        with connection.cursor() as cursor:
+
+            # Verifica se a avaliação pertence ao usuário
+            cursor.execute("""
+                SELECT fkIdFilme
+                FROM reviewFilmes
+                WHERE id = %s
+                AND fkIdUsuario = %s
+            """, (review_id, session['usuarioId']))
+
+            review = cursor.fetchone()
+
+            if not review:
+                flash('Avaliação não encontrada ou você não tem permissão.')
+                return redirect(url_for('filmes.filmes'))
+
+            # Exclui a avaliação
+            cursor.execute("""
+                DELETE FROM reviewFilmes
+                WHERE id = %s
+                AND fkIdUsuario = %s
+            """, (review_id, session['usuarioId']))
+
+            connection.commit()
+
+        flash('Avaliação excluída com sucesso!')
+
+        return redirect(
+            url_for('filmes.detalheFilme', id=review['fkIdFilme'])
+        )
 
     finally:
         connection.close()
