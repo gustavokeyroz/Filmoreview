@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{ url_for('filmes.static', filename='detalheFilme.css') }}">
+        <link rel="stylesheet" href="{{ url_for('filmes.static',filename='detalheFilme.css') }}">
         <title>Filmes</title>
     </head>
 
@@ -10,16 +10,12 @@
         <header id="header">
             <nav>
                 <div class="logo">
-                    <h2>
-                        <a href="{{ url_for('homepage.homepage') }}">
-                            Filmoreview
-                        </a>
-                    </h2>
+                    <h2><a href="{{ url_for('homepage.homepage') }}">Filmoreview</a></h2>
                 </div>
             </nav>
         </header>
 
-        <!-- Conteúdo Principal -->
+        <!--Conteúdo Principal-->
         <main id="main">
 
             {% with mensagens = get_flashed_messages() %}
@@ -27,22 +23,18 @@
                     <p>{{ mensagem }}</p>
                 {% endfor %}
             {% endwith %}
-
+            
             <div class="review_filme">
-
                 <div class="filmeDetalhes">
                     <h1>{{ filme.nomeFilme }}</h1>
 
-                    <img
-                        src="{{ filme.imageUrl }}"
-                        alt="{{ filme.nomeFilme }}"
-                        class="imgDetalheFilme"
-                    >
+                    <img src="{{ filme.imageUrl }}" alt="{{ filme.nomeFilme }}" class="imgDetalheFilme">
 
                     <p>{{ filme.descricaoFilme }}</p>
 
                     <p>{{ filme.anoLancamento }}</p>
                 </div>
+
 
                 <div>
                     <div class="content">
@@ -50,20 +42,14 @@
                         <h2>Escolha o filme, dê uma nota e escreva a sua review.</h2>
                     </div>
 
-                    <form
-                        class="formulario"
-                        method="post"
-                        action="{{ url_for('filmes.criarPostagem', id=filme.id) }}"
-                    >
+                    <form class="formulario" method="post" action="{{ url_for('filmes.criarPostagem', id=filme.id) }}">
                         <br>
-
                         <h1>Nova review</h1>
                         <h5>Preencha os campos abaixo para publicar.</h5>
 
                         <h2>{{ filme.nomeFilme }}</h2>
 
                         <label for="nota">Nota:</label>
-
                         <select id="nota" name="nota" required>
                             <option value="">Escolha uma nota</option>
                             <option value="5">5 - Excelente</option>
@@ -74,19 +60,11 @@
                         </select>
 
                         <label for="review">Sua review:</label>
-
-                        <textarea
-                            id="review"
-                            name="comentario"
-                            rows="5"
-                            maxlength="255"
-                            required
-                        ></textarea>
+                        <textarea id="review" name="comentario" rows="5" maxlength="255" required></textarea>
 
                         <button type="submit">Publicar review</button>
                     </form>
                 </div>
-
             </div>
 
             <div class="postagens">
@@ -105,21 +83,6 @@
 
                         <p>{{ postagem.created_at }}</p>
 
-                        <!-- Botão de exclusão: somente o autor vê -->
-                        {% if session.get('usuarioId') == postagem.fkIdUsuario %}
-
-                            <form
-                                method="POST"
-                                action="{{ url_for('filmes.excluirReview', review_id=postagem.id) }}"
-                                onsubmit="return confirm('Tem certeza que deseja excluir sua review?')"
-                            >
-                                <button type="submit">
-                                    Excluir review
-                                </button>
-                            </form>
-
-                        {% endif %}
-
                     </div>
 
                 {% else %}
@@ -129,7 +92,7 @@
                 {% endfor %}
 
             </div>
-
+            
         </main>
 
     </body>
