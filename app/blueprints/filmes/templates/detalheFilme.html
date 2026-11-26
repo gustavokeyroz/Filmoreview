@@ -20,7 +20,7 @@
 
             {% with mensagens = get_flashed_messages() %}
                 {% for mensagem in mensagens %}
-                    <p>{{ mensagem }}</p>
+                    <p class="mensagem">{{ mensagem }}</p>
                 {% endfor %}
             {% endwith %}
             
