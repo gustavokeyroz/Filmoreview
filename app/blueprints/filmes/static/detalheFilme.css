@@ -150,6 +150,7 @@ nav {
 }
 
 .postagens {
+    border-radius: 15px;
     padding: 10px;
     width: auto;
     background-color: #2D1C7F;
@@ -160,4 +161,12 @@ nav {
     font-size: 20px;
     padding-bottom: 20px;
 }
+    .excluirReview {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #C8B3F6;
+        font-size: 14px;
+    }
 }
