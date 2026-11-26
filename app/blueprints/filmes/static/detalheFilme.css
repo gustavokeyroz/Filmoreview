@@ -161,14 +161,16 @@ nav {
     font-size: 20px;
     padding-bottom: 20px;
 }
-    .excluirReview {
-        margin: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        background-color: #C8B3F6;
-        font-size: 14px;
-    }
+
+}
+
+.excluirReview {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #C8B3F6;
+    font-size: 14px;
 }
 
 .mensagem {
