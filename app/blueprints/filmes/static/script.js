@@ -1,11 +1,10 @@
 var header = document.getElementById('header');
-var divFilmes = document.getElementById('filmes');
+var main = document.getElementById('main');
 
 headerAltura = header.offsetHeight;
 headerWidth = header.offsetWidth;
 
-divFilmes.style.marginTop = `calc(${headerAltura}px + 1%)`;
-divFilmes.style.width = `calc(${headerWidth}px)`;
+main.style.paddingTop = `calc(${headerAltura}px + 1%)`;
 
 const carrosseis = document.querySelectorAll('.carousel');
 
