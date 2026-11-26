@@ -36,7 +36,7 @@
             <input type="email" id="email" required name="email">
             
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" required name="senha">
+            <input type="password" id="senha" minlength="8" required name="senha">
 
             <button type="submit">Login</button>
             <p>Não possui uma conta? <a href="{{ url_for('auth.cadastro') }}">Criar conta</a></p>
