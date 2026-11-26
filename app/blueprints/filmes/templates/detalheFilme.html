@@ -70,27 +70,39 @@
             <div class="postagens">
 
                 <h1>Reviews dos usuários</h1>
-
+            
                 {% for postagem in postagens %}
-
+            
                     <div class="postagem">
-
+            
                         <h2>Usuário: {{ postagem.nomeUsuario }}</h2>
-
+            
                         <p>Nota: {{ postagem.nota }}/5</p>
-
+            
                         <p>Comentário: {{ postagem.comentario }}</p>
-
+            
                         <p>{{ postagem.created_at }}</p>
-
+            
+                        {% if session.get('usuarioId') == postagem.fkIdUsuario %}
+            
+                            <form
+                                method="POST"
+                                action="{{ url_for('filmes.excluirReview', review_id=postagem.id) }}"
+                                onsubmit="return confirm('Tem certeza que deseja excluir sua review?')"
+                            >
+                                <button type="submit">Excluir review</button>
+                            </form>
+            
+                        {% endif %}
+            
                     </div>
-
+            
                 {% else %}
-
+            
                     <p>Este filme ainda não possui reviews.</p>
-
+            
                 {% endfor %}
-
+            
             </div>
             
         </main>
