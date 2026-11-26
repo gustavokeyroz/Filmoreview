@@ -170,3 +170,8 @@ nav {
         font-size: 14px;
     }
 }
+
+.mensagem {
+    color: red;
+    font-size: medium;
+}
