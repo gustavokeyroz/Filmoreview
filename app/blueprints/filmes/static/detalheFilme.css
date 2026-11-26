@@ -10,6 +10,7 @@ body{
 }
 
 main{
+    padding: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,7 +137,6 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 200px;
 
     .filmeDetalhes {
         height: 100%;
@@ -151,7 +151,6 @@ nav {
 
 .postagens {
     border-radius: 15px;
-    padding: 200px;
     width: auto;
     background-color: #2D1C7F;
 
