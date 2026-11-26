@@ -133,12 +133,13 @@ nav {
 }
 
 .review_filme {
-    margin-top: 200px;
+    padding: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .filmeDetalhes {
+        margin-top: 200px;
         height: 100%;
         width: 100%;
     }
@@ -150,7 +151,6 @@ nav {
 }
 
 .postagens {
-    margin-top: 200px;
     border-radius: 15px;
     width: auto;
     background-color: #2D1C7F;
