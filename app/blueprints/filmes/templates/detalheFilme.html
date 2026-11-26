@@ -90,7 +90,7 @@
                                 action="{{ url_for('filmes.excluirReview', review_id=postagem.id) }}"
                                 onsubmit="return confirm('Tem certeza que deseja excluir sua review?')"
                             >
-                                <button type="submit">Excluir review</button>
+                                <button class="excluirReview" type="submit">Excluir review</button>
                             </form>
             
                         {% endif %}
